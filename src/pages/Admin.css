@@ -1,0 +1,197 @@
+.admin {
+  padding: 48px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== כותרת ===== */
+.admin h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== כרטיסי סטטיסטיקות ===== */
+.stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.stats .card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+}
+.stats .card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #203a43;
+}
+.stats .card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+/* ===== טפסים ===== */
+.add-product {
+  margin: 30px 0;
+}
+.add-product h3 {
+  margin-bottom: 10px;
+}
+.add-product form {
+  display: grid;
+  gap: 10px;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.add-product input,
+.add-product textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.add-product .primary {
+  padding: 10px;
+  background: #203a43;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.add-product .primary:hover {
+  background: #2c5364;
+}
+
+/* ===== טבלאות ===== */
+.table-wrap {
+  margin: 30px 0;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+.table th, .table td {
+  padding: 10px;
+  border: 1px solid #eee;
+  text-align: right;
+}
+.table th {
+  background: #f9f9f9;
+  font-weight: 700;
+}
+.table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* ===== כפתורים ===== */
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 0 4px;
+}
+button:hover {
+  filter: brightness(1.05);
+}
+button.delete-btn {
+  background: #b00020;
+  color: #fff;
+}
+button.delete-btn:hover {
+  background: #d32f2f;
+}
+button.save-btn {
+  background: #2e7d32;
+  color: #fff;
+}
+button.save-btn:hover {
+  background: #388e3c;
+}
+button.cancel-btn {
+  background: #757575;
+  color: #fff;
+}
+button.cancel-btn:hover {
+  background: #616161;
+}
+
+/* ===== מצב עריכה ===== */
+.table input {
+  width: 95%;
+  padding: 6px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+/* ===== רספונסיביות ===== */
+@media (max-width: 1024px) {
+  .stats {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stats .card {
+    width: 100%;
+  }
+
+  .add-product form {
+    gap: 8px;
+  }
+
+  .table th, .table td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .table input {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin {
+    padding: 20px 12px;
+  }
+
+  .stats {
+    gap: 12px;
+  }
+
+  .add-product form {
+    padding: 12px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .table {
+    font-size: 0.85rem;
+    min-width: 600px; /* כדי לא לשבור טבלה, משתמשים ב־scroll */
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  .add-product input,
+  .add-product textarea {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}

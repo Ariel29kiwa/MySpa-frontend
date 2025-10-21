@@ -1,0 +1,262 @@
+/* ===== בסיס כללי + RTL ===== */
+:root {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #213547;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  direction: rtl;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ===== כפתור ☰ (תפריט צד) ===== */
+.menu-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 1.9rem;
+  background: rgba(255,255,255,0.94);
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 1100;
+  backdrop-filter: blur(6px);
+}
+.menu-btn:hover { filter: brightness(0.98); }
+
+/* ===== Overlay ===== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1040;
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: #0f2027;
+  padding: 70px 0 20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.25);
+  z-index: 1050;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+}
+.sidebar.open { transform: translateX(0%); }
+.sidebar ul {
+  list-style: none; margin: 0; padding: 0 10px;
+}
+.sidebar li { margin: 8px 0; }
+.sidebar a, .sidebar .linklike {
+  display: block;
+  padding: 12px 14px;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.sidebar a:hover, .sidebar .linklike:hover {
+  background: #203a43;
+  color: #ff8a26;
+  transform: translateX(-2px);
+}
+.sidebar .linklike {
+  background: transparent; border: none; text-align: right; cursor: pointer; width: 100%;
+}
+
+/* ===== Page Wrapper ===== */
+.page {}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  background: url("/images/hero.jpg") no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 110px 20px;
+  min-height: 64vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.35));
+  z-index: 1;
+}
+.hero h1, .hero p, .hero .cta { position: relative; z-index: 2; }
+.hero h1 {
+  font-size: 2.9rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.55);
+  animation: riseIn 600ms ease-out both;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin: 14px 0 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.55);
+  animation: fadeUp 700ms 80ms ease-out both;
+}
+.cta {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 12px 24px;
+  background: #ff6600;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(255,102,0,0.26);
+  transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeUp 800ms 120ms ease-out both;
+}
+.cta:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(255,102,0,0.28); }
+
+/* אנימציות עדינות */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Featured / Products Grid ===== */
+.featured { padding: 48px 20px; text-align: center; }
+.featured h2 { margin: 0 0 18px; font-size: 1.9rem; }
+
+.products {
+  /* משדרג מתצוגת flex לגריד מודרני ורספונסיבי */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 16px;
+  align-items: stretch;
+}
+
+/* כרטיס מוצר משודרג */
+.product-card {
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  text-align: right;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  transition: transform 0.16s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 26px rgba(0,0,0,0.10);
+}
+.product-card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.product-card p { margin: 0 0 10px; color: #444; }
+.price { font-weight: 800; color: #ff6600; }
+
+/* תמונת מוצר בתוך כרטיס */
+.product-card img,
+.product-img { 
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* כפתורים בשורה */
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* ===== About ===== */
+.about {
+  padding: 48px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+.about h2 { margin: 0 0 14px; font-size: 1.7rem; }
+.about p {
+  margin: 0 auto 20px;
+  max-width: 820px;
+  color: #444;
+}
+.about .more {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #203a43;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+}
+.about .more:hover { filter: brightness(1.06); }
+
+/* ===== Contact ===== */
+.contact { padding: 48px 20px; max-width: 700px; margin: 0 auto; }
+.contact h2 { margin-bottom: 20px; text-align: center; }
+.contact-form { display: grid; gap: 14px; }
+.contact-form label { display: grid; gap: 6px; text-align: right; }
+.contact-form input, .contact-form textarea {
+  padding: 10px 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem;
+}
+.contact-form .primary {
+  padding: 12px; background: #203a43; color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 800;
+}
+.status { margin-top: 10px; text-align: center; color: #203a43; font-weight: 600; }
+
+/* ===== Auth/Admin טבלאות ===== */
+.auth, .admin { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+.auth-form, .add-product form { display: grid; gap: 12px; }
+input, textarea { padding: 10px; border: 1px solid #ddd; border-radius: 10px; }
+.primary { background: #203a43; color: #fff; border: none; padding: 10px 16px; border-radius: 10px; cursor: pointer; font-weight: 800; }
+.error { color: #b00020; text-align: center; }
+.table { width: 100%; border-collapse: collapse; background: #fff; }
+.table th, .table td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: right; }
+.table th { background: #f5f7fa; }
+.table-wrap { margin-top: 20px; overflow-x: auto; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; margin: 16px 0; }
+.card { border: 1px solid #eee; border-radius: 12px; padding: 12px; background: #fff; text-align: center; }
+
+/* ===== Footer ===== */
+footer {
+  background: #0f2027; color: #fff; text-align: center; padding: 16px; font-size: 0.92rem; margin-top: 40px;
+}
+
+/* ===== רספונסיביות ===== */
+@media (max-width: 1023px) {
+  .hero { padding: 80px 16px; min-height: 56vh; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+  .cta { font-size: 0.95rem; padding: 10px 18px; }
+  .about { padding: 36px 16px; }
+  .about p { font-size: 0.95rem; }
+  .auth, .admin { padding: 36px 16px; }
+  .table th, .table td { font-size: 0.95rem; }
+  footer { font-size: 0.85rem; padding: 12px; }
+}
