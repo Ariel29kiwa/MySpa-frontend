@@ -19,7 +19,7 @@ export default function App() {
   // שליפת מוצרים לדף הבית/קטלוג
   useEffect(() => {
     axios
-      .get<Product[]>("http://localhost:5000/api/products")
+      .get<Product[]>("https://myspa-backend.onrender.com/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);

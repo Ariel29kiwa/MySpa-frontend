@@ -53,7 +53,7 @@ export default function Admin({ role }: { role: string | null }) {
 
     // טעינת מוצרים
     axios
-      .get("http://localhost:5000/api/products")
+      .get("https://myspa-backend.onrender.com/api/products")
       .then((res) => setProducts(res.data))
       .catch(() => {});
   }, [role]);
@@ -71,7 +71,7 @@ export default function Admin({ role }: { role: string | null }) {
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/products", {
+      await axios.post("https://myspa-backend.onrender.com/api/products", {
         name: newName,
         description: newDesc,
         price: parseFloat(newPrice),
@@ -95,7 +95,7 @@ export default function Admin({ role }: { role: string | null }) {
   const handleDeleteProduct = async (id: number) => {
     if (!window.confirm("למחוק מוצר זה?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`);
+      await axios.delete(`https://myspa-backend.onrender.com/api/products/${id}`,);
       setProducts(products.filter((p) => p.id !== id));
     } catch {
       alert("שגיאה במחיקה");
@@ -105,7 +105,7 @@ export default function Admin({ role }: { role: string | null }) {
   // --- עדכון מוצר ---
   const handleUpdateProduct = async (id: number) => {
     try {
-      await axios.put(`http://localhost:5000/api/products/${id}`, {
+      await axios.put(`https://myspa-backend.onrender.com/api/products/${id}`, {
         name: editName,
         description: editDesc,
         price: parseFloat(editPrice),

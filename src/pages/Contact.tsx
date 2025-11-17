@@ -12,7 +12,7 @@ export default function Contact() {
     setStatus(null);
 
     try {
-      await axios.post("http://localhost:5000/api/leads", {
+      await axios.post("https://myspa-backend.onrender.com/api/leads", {
         name,
         email,
         message,
