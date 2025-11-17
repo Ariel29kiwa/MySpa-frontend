@@ -47,7 +47,7 @@ export default function Admin({ role }: { role: string | null }) {
 
     // טעינת לידים
     axios
-      .get("http://localhost:5000/api/admin/leads")
+      .get("https://myspa-backend.onrender.com/api/admin/leads")
       .then((res) => setLeads(res.data))
       .catch((e) => setErr(e?.response?.data?.error || "Load failed"));
 
@@ -84,7 +84,7 @@ export default function Admin({ role }: { role: string | null }) {
       setNewPrice("");
       setNewCategory("");
       setNewImage("");
-      const updated = await axios.get("http://localhost:5000/api/products");
+      const updated = await axios.get("https://myspa-backend.onrender.com/api/products");
       setProducts(updated.data);
     } catch {
       alert("שגיאה בהוספת מוצר");
@@ -114,7 +114,7 @@ export default function Admin({ role }: { role: string | null }) {
       });
       alert("המוצר עודכן בהצלחה!");
       setEditingId(null);
-      const updated = await axios.get("http://localhost:5000/api/products");
+      const updated = await axios.get("https://myspa-backend.onrender.com/api/products");
       setProducts(updated.data);
     } catch {
       alert("שגיאה בעדכון מוצר");
