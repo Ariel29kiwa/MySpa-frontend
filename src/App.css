@@ -83,7 +83,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== Hero ===== */
 .hero {
   position: relative;
-  background: url("/images/hero.jpg") no-repeat center center/cover;
+  background: url("/images/back.jpg") no-repeat center center/cover;
   color: #fff;
   text-align: center;
   padding: 110px 20px;

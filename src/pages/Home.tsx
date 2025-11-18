@@ -19,7 +19,7 @@ export default function Home({ products }: { products: Product[] }) {
         </div>
 
 
-        <p>ג׳קוזי, סאונות ובריכות זרמים – האיכות שהבית שלך צריך</p>
+        <h1>הופכים חלומות למציאות</h1>
         <Link className="cta" to="/products">כל המוצרים</Link>
       </header>
 
