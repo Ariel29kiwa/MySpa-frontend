@@ -14,7 +14,11 @@ export default function Home({ products }: { products: Product[] }) {
     <div>
       {/* Hero משודרג */}
       <header className="hero">
-        <h1>ברוכים הבאים ל־MySpa</h1>
+        <div className="hero-logo">
+          <img src="/images/logo.png" alt="MySpa" />
+        </div>
+
+
         <p>ג׳קוזי, סאונות ובריכות זרמים – האיכות שהבית שלך צריך</p>
         <Link className="cta" to="/products">כל המוצרים</Link>
       </header>
