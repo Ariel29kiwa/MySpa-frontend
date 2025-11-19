@@ -10,12 +10,9 @@ export interface Product {
 }
 
 export default function Home({ products }: { products: Product[] }) {
-  // ניקח עד 4 מוצרים מובילים
-  const featured = products.slice(0, 4);
-
   return (
     <div>
-      {/* Hero */}
+      {/* Hero משודרג */}
       <header className="hero">
         <div className="hero-logo">
           <img src="/images/logo.png" alt="MySpa" />
@@ -29,34 +26,28 @@ export default function Home({ products }: { products: Product[] }) {
 
       {/* מוצרים מובילים */}
       <section className="featured">
-        <h2 className="featured-title">המוצרים המובילים שלנו</h2>
+        <h2>המוצרים המובילים שלנו</h2>
 
-        <div className="featured-grid">
-          {featured.map((p) => (
-            <article key={p.id} className="product-card">
-              <div className="product-card-image-wrapper">
-                {p.image_url && (
-                  <img src={p.image_url} alt={p.name} />
-                )}
+        <div className="products">
+          {products.slice(0, 3).map((p) => (
+            <div key={p.id} className="product-card">
+              {p.image_url && (
+                <img src={p.image_url} alt={p.name} className="product-img" />
+              )}
+
+              <h3>{p.name}</h3>
+              <p className="price">₪{p.price}</p>
+              <p>{p.description}</p>
+
+              <div className="buttons">
+                <Link className="cta" to={`/products/${p.id}`}>
+                  לפרטים
+                </Link>
+                <Link className="cta" to="/contact">
+                  צור קשר
+                </Link>
               </div>
-
-              <div className="product-card-body">
-                <h3 className="product-card-name">{p.name}</h3>
-                <p className="product-card-price">
-                  ₪{p.price.toLocaleString()}
-                </p>
-                <p className="product-card-desc">{p.description}</p>
-
-                <div className="product-card-actions">
-                  <Link className="btn btn-secondary" to={`/products/${p.id}`}>
-                    לפרטים
-                  </Link>
-                  <Link className="btn btn-outline" to="/contact">
-                    צור קשר
-                  </Link>
-                </div>
-              </div>
-            </article>
+            </div>
           ))}
         </div>
       </section>
@@ -73,6 +64,7 @@ export default function Home({ products }: { products: Product[] }) {
           כגון שבירו, דוראל, סמי נופי ועוד. בזכות הידע, החדשנות והקפדה על כל
           פרט – אנחנו הופכים כל חלל לחוויית ספא מושלמת.
         </p>
+
         <Link className="more" to="/about">
           קרא עוד
         </Link>
